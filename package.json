@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "pub": "npm version patch && git add . && git commit -m \"Updates\"  && git push"
+    "pub": "git add . && git commit -m \"Updates\" && npm version patch  && git push"
   },
   "repository": {
     "url": "https://github.com/nextlogistics/next3pl-components-package"
