@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/ng-packagr/package.schema.json",
-  "name": "@saikrishna5907/next3pl-components-package",
+  "name": "@nextlogistics/next3pl-components-package",
   "version": "1.0.1",
   "scripts": {
     "ng": "ng",
@@ -10,10 +10,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "pub": "npm install && npm version patch && npm run packagr && npm publish"
+    "pub": "npm version patch && git add . && git commit -m \"Updates\"  && git push"
   },
   "repository": {
-    "url": "https://github.com/saikrishna5907/next3pl-components-package"
+    "url": "https://github.com/nextlogistics/next3pl-components-package"
   },
   "ngPackage": {
     "lib": {
@@ -78,7 +78,7 @@
     "typescript": "~4.1.5"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@saikrishna5907",
+    "registry": "https://npm.pkg.github.com/@nextlogistics",
     "access": "restricted"
   }
 }
