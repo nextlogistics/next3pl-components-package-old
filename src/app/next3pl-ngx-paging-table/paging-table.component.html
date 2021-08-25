@@ -1,0 +1,64 @@
+<div fxLayout="column" fxFlex #dataTableWrapper class="mt-10 w-100-p">
+    <ngx-datatable
+        class="material striped h-100-p" [rows]="tableDataList.value" [columnMode]="'force'"
+        [headerHeight]="48" [footerHeight]="56" [rowHeight]="45" [scrollbarV]="true" [scrollbarH]="true"
+        [sorts]="[{ prop: pageSortByColumn, dir: sortByDirection }]" [loadingIndicator]="isLoading"
+        (activate)="onActivate($event)" (select)="onRowSelect($event)"
+        [selected]="rowSelected" [selectionType]="selectionType" *ngIf="defaultPaging"
+        [externalPaging]="true" [externalSorting]="true" [reorderable]="true"
+        [count]="defaultPaging.totalItemCount" [offset]="defaultPaging.pageNumber -1"
+        (sort)="onSort($event)" (page)="setPage($event)">
+
+        <!--        multiple select commented for next version-->
+
+        <!--        <ngx-datatable-column [maxWidth]="30" [sortable]="false" [canAutoResize]="false" [draggable]="false"-->
+        <!--                              [resizeable]="false" *ngIf='isRowsSelectable' [headerCheckboxable]='false'>-->
+        <!--            <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"-->
+        <!--                         let-selectFn="selectFn">-->
+        <!--                <mat-checkbox [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)">-->
+        <!--                </mat-checkbox>-->
+        <!--            </ng-template>-->
+        <!--            <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"-->
+        <!--                         let-onCheckboxChangeFn="onCheckboxChangeFn">-->
+        <!--                <mat-checkbox [checked]="isSelected" (change)="onCheckboxChangeFn($event)"></mat-checkbox>-->
+        <!--            </ng-template>-->
+        <!--        </ngx-datatable-column>-->
+        <!--        <ngx-datatable-column name="Actions" prop="action" headerClass="text-truncate first-item-datatable"-->
+        <!--                              [resizeable]="true" [minWidth]="220">-->
+        <!--            <ng-template ngx-datatable-cell-template let-row="row">-->
+        <ngx-datatable-column *ngFor="let column of tableColumns" [name]="column.name"
+                              [sortable]="column.sortable" [prop]="column.prop" [resizeable]="column.resizable"
+                              [minWidth]="column.minWidth" [maxWidth]="column.maxWidth">
+            <ng-template let-value="value" ngx-datatable-cell-template let-row="row">
+                <div *ngIf="(!isLoading && value) && (column.prop !== 'action' && !column.progressObj)">
+                    <div *ngIf="!column.isLink && !column.isDate">{{value}}</div>
+
+                    <div *ngIf="column.isDate">
+                        {{ value | date: 'dd/MM/yyyy h:mm a'}}
+                    </div>
+                    <div *ngIf="column.isLink">
+                        <span class="span-link"
+                              (click)="onTableLinkClick({row: row, columnProp:column.prop  })">
+                            {{ value }}
+                        </span>
+                    </div>
+                </div>
+<!--                -->
+                <div *ngIf="column.progressObj" fxLayout="row" fxLayoutGap="10px" fxFlex>
+                    <mat-progress-bar class="progressBar" mode="determinate" [value]="+value.toFixed(2)" fxFlex="80"
+                                      [ngStyle]="{'height': column.progressObj.height}"></mat-progress-bar>
+                    <div class="title" fxFlex="20">{{row.progress.qtyProdCounted}} / {{row.progress.qtyLps}}</div>
+                </div>
+                <div *ngIf="column.prop === 'action'">
+                    <button mat-icon-button *ngFor="let icon of column.iconList">
+                        <mat-icon (click)="onActionIcon(icon, row)" [color]="icon.iconColor">{{icon.iconName}}
+                        </mat-icon>
+                    </button>
+                </div>
+                <!--                <div class='item' *ngIf='isLoading'>-->
+                <!--                    <ngx-skeleton-loader count='22' appearance='line'></ngx-skeleton-loader>-->
+                <!--                </div>-->
+            </ng-template>
+        </ngx-datatable-column>
+    </ngx-datatable>
+</div>
