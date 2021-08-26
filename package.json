@@ -1,14 +1,44 @@
 {
-  "name": "next3pl-package",
+  "$schema": "./node_modules/ng-packagr/package.schema.json",
+  "name": "@nextlogistics/next3pl-components",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "packagr": "ng-packagr -p package.json",
+    "pub": "git add . && git commit -m \"Updates\" && npm version patch  && git push"
   },
-  "private": true,
+  "repository": {
+    "url": "https://github.com/nextlogistics/next3pl-components-package"
+  },
+  "ngPackage": {
+    "lib": {
+      "entryFile": "public-api.ts"
+    },
+    "allowedNonPeerDependencies": [
+      "@angular/animations",
+      "@angular/cdk",
+      "@angular/common",
+      "@angular/compiler",
+      "@angular/forms",
+      "@angular/core",
+      "@angular/http",
+      "@angular/material",
+      "@angular/platform-browser",
+      "@angular/platform-browser-dynamic",
+      "@angular/router",
+      "core-js",
+      "rxjs",
+      "tsickle",
+      "zone.js",
+      "@swimlane/ngx-datatable",
+      "@angular/flex-layout",
+      "ng-packagr"
+    ]
+  },
   "dependencies": {
     "@angular/animations": "~12.2.0",
     "@angular/common": "~12.2.0",
@@ -20,9 +50,14 @@
     "@angular/router": "~12.2.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "@angular/material": "11.2.4",
+    "@angular/flex-layout": "^11.0.0-beta.33",
+    "@angular/cdk": "11.2.4",
+    "@swimlane/ngx-datatable": "^19.0.0"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "~12.2.2",
     "@angular/cli": "~12.2.2",
     "@angular/compiler-cli": "~12.2.0",
     "@types/jasmine": "~3.8.0",
@@ -33,6 +68,11 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "ng-packagr": "^12.1.1",
     "typescript": "~4.3.5"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@nextlogistics",
+    "access": "restricted"
   }
 }

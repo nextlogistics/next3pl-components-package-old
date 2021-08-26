@@ -3,5 +3,37 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "next3pl-package": {
+      "projectType": "library",
+      "root": "projects/next3pl-package",
+      "sourceRoot": "projects/next3pl-package/src",
+      "prefix": "next3pl",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/next3pl-package/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/next3pl-package/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/next3pl-package/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/next3pl-package/src/test.ts",
+            "tsConfig": "projects/next3pl-package/tsconfig.spec.json",
+            "karmaConfig": "projects/next3pl-package/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "next3pl-package"
 }
