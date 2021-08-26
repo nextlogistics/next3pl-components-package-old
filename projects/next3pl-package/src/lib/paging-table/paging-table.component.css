@@ -1,0 +1,19 @@
+::ng-deep .ngx-datatable.material .datatable-body .progress-linear .container .bar {
+  background-color: #fb8c00 !important;
+}
+
+::ng-deep .ngx-datatable.material .datatable-body .progress-linear .container {
+  background-color: #f5d6af !important;
+}
+
+/* ::ng-deep .datatable-body-row.active .datatable-row-group {
+    background-color: rgba(255, 135, 0, 0.5) !important;
+} */
+.progressBar {
+  width: 180px;
+  border-radius: 10px;
+}
+
+::ng-deep  .ngx-datatable.material .datatable-body .mat-progress-bar-buffer {
+  background-color: #e0d3c3;
+}

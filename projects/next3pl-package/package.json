@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "tslib": "^2.3.0"
+<<<<<<< HEAD
   },
   "publishConfig": {
     "access": "public"
@@ -15,3 +16,7 @@
     "name": "Saikrishna Sangishetty"
   }
 }
+=======
+  }
+}
+>>>>>>> master

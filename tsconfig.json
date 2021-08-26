@@ -11,10 +11,23 @@
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
+<<<<<<< HEAD
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
+=======
+    "paths": {
+      "next3pl-package": [
+        "dist/next3pl-package/next3pl-package",
+        "dist/next3pl-package"
+      ]
+    },
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2017",
+>>>>>>> master
     "module": "es2020",
     "lib": [
       "es2018",
